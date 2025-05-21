@@ -21,7 +21,7 @@ $params = [
     ":domain" => "%" . $_GET['domain'] . "%"
 ];
 
-// select cliente with city name
+// select cliente with equal domains
 $results = $db->execute_query("SELECT * FROM clientes WHERE email LIKE :domain" , $params);
 
 if ($results->affected_rows == 0) {
