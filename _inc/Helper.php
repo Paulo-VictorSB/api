@@ -31,7 +31,16 @@ function invalid_type_paramter($paramter, $expected_type_paramter)
 {
     global $res;
     $res->set_status('error');
-    $res->set_error_message('Invalid type paramter: ' . $paramter . ', ' . 'Expected type: ', $expected_type_paramter);
+    $res->set_error_message('Invalid type paramter: ' . $paramter . ', ' . 'Expected type: ' . $expected_type_paramter);
+    $res->response();
+    exit();
+}
+
+function no_data($message)
+{
+    global $res;
+    $res->set_status('error');
+    $res->set_error_message($message);
     $res->response();
     exit();
 }

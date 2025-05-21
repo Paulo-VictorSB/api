@@ -25,12 +25,7 @@ $params = [
 $results = $db->execute_query("SELECT * FROM clientes WHERE id = :id", $params);
 
 if ($results->affected_rows == 0) {
-    $res->set_status('error');
-    $res->set_error_message('Id not found.');
-    // integration key
-    check_integration_key_get();
-    $res->response();
-    exit();
+    no_data('Client not found.');
 }
 
 $res->set_status('success');
