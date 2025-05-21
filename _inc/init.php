@@ -49,6 +49,7 @@ $params = [
     ':username' => $username
 ];
 $results = $db->execute_query("SELECT * FROM users WHERE username = :username", $params);
+
 if($results->affected_rows == 0){
     $res->set_status('error');
     $res->set_error_message('Invalid credentials.');
