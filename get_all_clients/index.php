@@ -14,5 +14,7 @@ $res->set_response_data($results->results);
 
 // aditional field
 $res->set_aditional_field('total_clients', $results->affected_rows);
+// integration key
+check_integration_key_get();
 
 $res->response();

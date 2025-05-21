@@ -32,9 +32,9 @@ class Response
         $this->response_data = $response_data;
     }
 
-    public function set_integration_key($integration_key)
+    public function set_integration_key($key)
     {
-        $this->integration_key = $integration_key;
+        $this->integration_key = $key;
     }
 
     public function set_aditional_field($field_name, $field_value)
@@ -50,11 +50,16 @@ class Response
             $tmp['error_message'] = $this->error_message;
         }
         $tmp['data'] = $this->response_data;
-        
+
+        // adicional fields
         if (!empty($this->aditional_fields) && is_array($this->aditional_fields)) {
             foreach ($this->aditional_fields as $key => $value) {
                 $tmp[$key] = $value;
             }
+        }
+
+        if (!empty($this->integration_key)){
+            $tmp['integration_key'] = $this->integration_key;
         }
 
         $tmp['time_response'] = time();
