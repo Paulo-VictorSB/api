@@ -7,25 +7,25 @@ require_once("../_inc/init.php");
 // check if request method is valid
 check_request_method($request_method, 'GET');
 
-// check if this city is set
-if (!isset($_GET['city'])) {
-    missing_request_paramter('city');
+// check if this domain is set
+if (!isset($_GET['domain'])) {
+    missing_request_paramter('domain');
 }
 
-// check if this city is string
-if (!is_string($_GET['city'])) {
-    invalid_type_paramter('city', 'string');
+// check if this domain is string
+if (!is_string($_GET['domain'])) {
+    invalid_type_paramter('domain', 'string');
 }
 
 $params = [
-    ":city" => $_GET['city']
+    ":domain" => "%" . $_GET['domain'] . "%"
 ];
 
 // select cliente with city name
-$results = $db->execute_query("SELECT * FROM clientes WHERE cidade = :city", $params);
+$results = $db->execute_query("SELECT * FROM clientes WHERE email LIKE :domain" , $params);
 
 if ($results->affected_rows == 0) {
-    no_data('City not found.');
+    no_data('Domain not found.');
 }
 
 $res->set_status('success');

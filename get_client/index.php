@@ -14,7 +14,7 @@ if (!isset($_GET['id'])) {
 
 // check if this id is numeric
 if (!is_numeric($_GET['id'])) {
-    invalid_type_paramter('id', 'number');
+    invalid_type_paramter('id', 'int');
 }
 
 $params = [
