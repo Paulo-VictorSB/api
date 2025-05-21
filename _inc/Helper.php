@@ -17,3 +17,21 @@ function check_integration_key_get()
         $res->set_integration_key($_GET['integration_key']);
     }
 }
+
+function missing_request_paramter($paramter)
+{
+    global $res;
+    $res->set_status('error');
+    $res->set_error_message('Missing paramter: ' . $paramter);
+    $res->response();
+    exit();
+}
+
+function invalid_type_paramter($paramter, $expected_type_paramter)
+{
+    global $res;
+    $res->set_status('error');
+    $res->set_error_message('Invalid type paramter: ' . $paramter . ', ' . 'Expected type: ', $expected_type_paramter);
+    $res->response();
+    exit();
+}

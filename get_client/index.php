@@ -9,22 +9,12 @@ check_request_method($request_method, 'GET');
 
 // check if this id is set
 if (!isset($_GET['id'])) {
-    $res->set_status('error');
-    $res->set_error_message('Empty id.');
-    // integration key
-    check_integration_key_get();
-    $res->response();
-    exit();
+    missing_request_paramter('id');
 }
 
 // check if this id is numeric
 if (!is_numeric($_GET['id'])) {
-    $res->set_status('error');
-    $res->set_error_message('Id is not a number.');
-    // integration key
-    check_integration_key_get();
-    $res->response();
-    exit();
+    invalid_type_paramter('id', 'number');
 }
 
 $params = [
