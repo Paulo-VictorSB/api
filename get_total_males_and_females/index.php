@@ -16,10 +16,6 @@ $results = $db->execute_query(
     FROM clientes"
 );
 
-if ($results->affected_rows == 0) {
-    no_data('This gender is f or m.');
-}
-
 $res->set_status('success');
 $res->set_response_data($results->results);
 // integration key
