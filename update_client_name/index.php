@@ -25,8 +25,8 @@ check_integration_key_json($data);
 
 // params
 $params = [
-    'id' => $data['id'],
-    'nome' => $data['nome']
+    ':id' => $data['id'],
+    ':nome' => $data['nome']
 ];
 
 $db->execute_non_query(
