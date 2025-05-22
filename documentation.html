@@ -1,0 +1,95 @@
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação da API de Gestão de Clientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>API de Gestão de Clientes</h1>
+    <p><strong>Autenticação:</strong> Basic Auth</p>
+    <ul>
+        <li><strong>User:</strong> cliente1</li>
+        <li><strong>Password:</strong> passcliente1</li>
+    </ul>
+
+    <h2>Respostas de Erro</h2>
+    <pre>{ "status": "error", "error_message": "Missing authentication credentials.", "data": null, "time_response": 1747927991, "api_version": "1.0.0" }</pre>
+
+    <h2>Como acessar a API</h2>
+    <pre>git clone https://github.com/Paulo-VictorSB/api.git</pre>
+
+    <h2>Endpoints</h2>
+    <h3>GET /api_status/</h3>
+    <p>Verifica se a API está ativa ou em manutenção.</p>
+    <pre>{ "status": "success", "data": null, "time_response": 1747927944, "api_version": "1.0.0" }</pre>
+
+    <h3>GET /get_all_clients/</h3>
+    <p>Busca todos os clientes no banco de dados.</p>
+    <pre>{ "status": "success", "data": [...], "total_clients": 200, "time_response": 1747928054, "api_version": "1.0.0" }</pre>
+
+    <h3>GET /get_client/</h3>
+    <p>Pega todos os dados do cliente cujo ID é passado como parâmetro.</p>
+
+    <h3>GET /get_client_by_city/</h3>
+    <p>Pega os clientes cuja cidade é igual ao parâmetro passado.</p>
+
+    <h3>GET /get_client_by_email_domain/</h3>
+    <p>Pega os clientes cujo domínio do email corresponde ao parâmetro passado.</p>
+
+    <h3>GET /get_total_males_and_females/</h3>
+    <p>Retorna o total de clientes por gênero.</p>
+
+    <h3>POST /add_new_client/</h3>
+    <p>Adiciona um novo cliente.</p>
+    <pre>{ "nome": "", "sexo": "", "data_nascimento": "", "email": "", "telefone": "", "morada": "", "cidade": "", "ativo": true }</pre>
+
+    <h3>PUT /update_client_name/</h3>
+    <p>Atualiza o nome do cliente.</p>
+    <pre>{ "nome": "", "id": "" }</pre>
+
+    <h3>PUT /update_client_email/</h3>
+    <p>Atualiza o email do cliente.</p>
+    <pre>{ "email": "", "id": "" }</pre>
+
+    <h3>PATCH /delete_client/</h3>
+    <p>Deleta o cliente pelo ID.</p>
+    <pre>{ "id": "" }</pre>
+
+    <script>
+        console.log("Documentação carregada com sucesso!");
+    </script>
+
+
+</body>
+
+</html>
