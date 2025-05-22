@@ -1,0 +1,2 @@
+user: user_udemy_clientes
+pass: wic1pOg78OHOVO3Az5zu4E1eLIzEVI
