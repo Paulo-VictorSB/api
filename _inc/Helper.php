@@ -36,6 +36,34 @@ function invalid_type_paramter($paramter, $expected_type_paramter)
     exit();
 }
 
+function check_required_fields_in_json($data, $fields)
+{
+    foreach ($fields as $key) {
+        if (!key_exists($key, $data)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function check_integration_key_json($data)
+{
+    if (key_exists('integration_key', $data)) {
+        global $res;
+        $res->set_integration_key($data['integration_key']);
+    }
+}
+
+function invalid_input_fields($message, $data)
+{
+    global $res;
+    $res->set_status('error');
+    $res->set_error_message($message);
+    check_integration_key_json($data);
+    $res->response();
+}
+
 function no_data($message)
 {
     global $res;
