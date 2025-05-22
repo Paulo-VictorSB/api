@@ -28,6 +28,18 @@ if (!check_required_fields_in_json($data, $request_fields)) {
 // integration key
 check_integration_key_json($data);
 
+// check if there is already another client with the same name
+$params = [
+    ':nome' => $data['nome']
+];
+
+$results = $db->execute_query("SELECT id FROM clientes WHERE nome = :nome", $params);
+if ($results->affected_rows != 0) {
+    $res->set_status("error");
+    $res->set_error_message("There is another client with the same name.");
+    $res->response();
+}
+
 // prepare data 
 $params = [
     ':nome' => $data['nome'],
